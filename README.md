@@ -1,50 +1,65 @@
 # 🚀 Algo-Odyssey
 
-[![Build Status](https://github.com/TimelessCoderD/algo-odyssey/actions/workflows/ci.yml/badge.svg)](https://github.com/TimelessCoderD/algo-odyssey/actions)
-![Last Commit](https://img.shields.io/github/last-commit/TimelessCoderD/algo-odyssey)
-![Repo Size](https://img.shields.io/github/repo-size/TimelessCoderD/algo-odyssey)
-![Languages](https://img.shields.io/github/languages/count/TimelessCoderD/algo-odyssey)
-![Top Language](https://img.shields.io/github/languages/top/TimelessCoderD/algo-odyssey)
-
-Welcome to **Algo-Odyssey** — my personal journey of mastering **Data Structures and Algorithms (DSA)**.  
-This repository contains structured practice, problem solutions, and notes inspired by classic resources like **Narasimha Karumanchi’s DSA book**, coding platforms, and interview preparation guides.
+> My journey to mastering **Data Structures & Algorithms** using **Java**.
 
 ---
 
-## 📂 Repo Structure
+## 📚 Learning Resources
 
-- `recursion-backtracking/` → recursion problems, backtracking
-- `linked-lists/` → singly, doubly, circular linked list problems
-- `stacks-queues/` → stack/queue basics + applications
-- `hashmaps-strings/` → string manipulation, hashmap-based problems
-- `trees/` → binary trees, BST, traversals
-- `graphs/` → BFS, DFS, shortest paths, MST
-- `greedy/` → interval scheduling, job sequencing, knapsack
-- `dynamic-programming/` → classic DP problems (LCS, LIS, knapsack)
-- `math-bit-manipulation/` → primes, gcd, xor tricks
-
-Each topic contains:
-
-- ✅ **Problem solutions** (Python, later JS/Java if needed)
-- 📝 **Time & Space complexity notes**
-- 🧪 **Unit tests** under `tests/`
-- 📌 **Progress tracker in README**
+- 📘 Scaler Academy – Java & DSA
+- 📖 Data Structures and Algorithms Made Easy – Narasimha Karumanchi
+- 💻 LeetCode (Topic-wise practice after completing each chapter)
 
 ---
 
-## 🎯 Goals
+## 📂 Repository Structure
 
-- Strengthen core problem-solving skills
-- Build consistency (2–3 hrs daily practice)
-- Prepare for coding interviews
-- Transition towards **cloud-ready performance engineer / full-stack developer roles**
-
----
-
-## 🛠️ How to Run
-
-### Python
-
-```bash
-pytest tests/python
 ```
+Algo-Odyssey
+│
+├── docs/
+│
+├── java-basics/
+│
+├── dsa/
+│
+├── leetcode/
+│   ├── easy/
+│   ├── medium/
+│   └── hard/
+│
+├── resources/
+│
+├── tests/
+│
+├── README.md
+├── LICENSE
+└── .gitignore
+```
+
+---
+
+## 🎯 Progress
+
+### Java Basics
+- [ ] Variables & Data Types
+
+
+### DSA
+- [ ] Algorithm Analysis
+
+
+---
+
+## 📅 Daily Goal
+
+- Learn Java
+- Study one DSA concept
+- Implement it in Java
+- Commit & Push to GitHub
+
+---
+
+## 🚀 Motto
+
+> **Learn • Practice • Commit • Repeat**

@@ -10,3 +10,17 @@ package-lock.json
 # IDEs
 .vscode/
 .idea/
+
+# Java
+*.class
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# IntelliJ
+.idea/
+*.iml
+out/
