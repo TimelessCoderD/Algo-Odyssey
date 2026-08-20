@@ -53,36 +53,12 @@ Daily progress is recorded in:`docs/journal/YYYY-MM.md`
 Topic-specific knowledge is recorded in the relevant:`Notes.md`
 ---
 
-## Problem-Solving Lessons
-Lessons about how I approach programming problems.
+## Learning Reflection — August 20, 2026
 
----
+For Java, I am currently building the foundation through the Scaler
+course and practical coding.
 
-## Recurring Difficulties
-Problems or concepts that I repeatedly struggle with.
-
----
-
-## Breakthroughs
-Important moments where my understanding changed.
-
----
-
-## Mistakes & Lessons
-Mistakes that taught me something useful.
-
----
-
-## Learning Habits
-Observations about my study habits, consistency, problem-solving approach, and resource usage.
-
----
-
-## Interview Preparation Lessons
-Lessons about explaining solutions, complexity, communication, and interview performance.
-
----
-
-## Milestones
-
-Important long-term achievements in the journey.
+For DSA, I have started with Algorithm Analysis using the Karumanchi
+book. I will spend approximately one hour per day on DSA and progress
+through the chapter based on understanding rather than a fixed number
+of topics per day.
