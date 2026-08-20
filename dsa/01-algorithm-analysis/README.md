@@ -1,15 +1,20 @@
-# Recursion
+# 01 — Algorithm Analysis
 
-## Concepts
-- What is recursion?
-- Base case
-- Recursive case
-- Call stack
-- Tail recursion
+This section covers the fundamentals of analyzing algorithms.
 
-## Problems
-- [ ] Factorial
-- [ ] Fibonacci
-- [ ] Sum of N numbers
-- [ ] Binary Search
-- [ ] Tower of Hanoi
+## Topics
+
+- Variables
+- Data Types
+- Data Structures
+- Abstract Data Types
+- Algorithms
+- Running Time Analysis
+- Rate of Growth
+- Asymptotic Analysis
+- Big-O
+- Big-Omega
+- Big-Theta
+- Recurrence Relations
+- Master Theorem
+- Algorithm Analysis Problems
