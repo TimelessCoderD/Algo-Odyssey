@@ -1,20 +1,33 @@
 # 01 — Algorithm Analysis
 
-This section covers the fundamentals of analyzing algorithms.
+This chapter introduces the foundational ideas of algorithm analysis: how to reason about efficiency, compare solutions, and describe growth using asymptotic notation.
 
-## Topics
+The focus is on understanding how resource usage changes with input size, not on implementation details.
 
-- Variables
-- Data Types
-- Data Structures
-- Abstract Data Types
-- Algorithms
-- Running Time Analysis
-- Rate of Growth
-- Asymptotic Analysis
-- Big-O
-- Big-Omega
-- Big-Theta
-- Recurrence Relations
-- Master Theorem
-- Algorithm Analysis Problems
+---
+
+## Learning Objectives
+
+By the end of this chapter, I should be able to:
+
+- Understand variables, data types, data structures, and abstract data types.
+- Define what an algorithm is and why we analyze it.
+- Explain running time and space complexity.
+- Compare algorithms by their rate of growth.
+- Use Big-O, Big-Omega, and Big-Theta.
+- Reason about recurrence relations and common complexity patterns.
+- Solve algorithm analysis problems and recognize common mistakes.
+
+---
+
+## Chapter Structure
+
+```text
+01-algorithm-analysis/
+│
+├── README.md
+├── Concepts.md
+├── Problems.md
+├── Mistakes.md
+│
+└── ...
