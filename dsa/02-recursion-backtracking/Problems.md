@@ -571,6 +571,134 @@ Space: O(n)
 
 ---
 
+### 12. Recursive Search
+
+Determine whether a target exists in an array.
+
+Example:
+
+```
+[10, 25, 40, 70, 90]
+target = 40
+```
+
+Answer:
+
+```
+true
+```
+
+Status: Solved
+
+---
+
+### 13. Check Array is Sorted
+
+Determine whether an array is sorted in ascending order.
+
+Example:
+
+```
+[10, 20, 30, 40]
+```
+
+Answer:
+
+```
+true
+```
+
+Status: Solved
+
+---
+
+### 14. Count Occurrences
+
+Count how many times a target appears in an array.
+
+Example:
+
+```
+[10, 20, 10, 30, 10]
+target = 10
+```
+
+Answer:
+
+```
+3
+```
+
+Status: Solved
+
+---
+
+### 15. First Occurrence
+
+Find the first index of a target.
+
+Example:
+
+```
+[10, 20, 30, 20, 40]
+target = 20
+```
+
+Answer:
+
+```
+1
+```
+
+Status: Solved
+
+---
+
+### 16. Last Occurrence
+
+Find the last index of a target.
+
+Approach used:
+
+Search from right to left.
+
+Example:
+
+```
+[10, 20, 30, 20, 40]
+target = 20
+```
+
+Answer:
+
+```
+3
+```
+
+Status: Solved
+
+---
+
+### 17. Reverse String
+
+Reverse a string recursively using an accumulator.
+
+Example:
+
+```
+"hello"
+```
+
+Answer:
+
+```
+"olleh"
+```
+
+Status: Solved
+
+---
+
 # Complexity Summary
 
 | Problem | Recurrence | Time | Space |

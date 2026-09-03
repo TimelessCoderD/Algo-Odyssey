@@ -173,3 +173,147 @@ maxval = 70
 
 Final answer = 70
 
+# 4. Recursive Search
+
+### Algorithm
+
+1. Start from index 0.
+2. If index reaches the end, return false.
+3. Compare current element with target.
+4. If equal, return true.
+5. Otherwise recursively search the next index.
+
+### Pattern
+
+```
+if arr[index] == target
+    return true
+
+return search(arr, index + 1, target)
+```
+
+---
+
+# 5. Check Array is Sorted
+
+### Algorithm
+
+1. Start from index 0.
+2. Stop at the last element.
+3. Compare current element with the next element.
+4. If `arr[index] > arr[index + 1]`, return false.
+5. Otherwise recursively check the next position.
+6. If all pairs pass, return true.
+
+### Pattern
+
+```
+arr[index] <= arr[index + 1]
+AND
+isSorted(index + 1)
+```
+
+---
+
+# 6. Count Occurrences
+
+### Algorithm
+
+1. Start from index 0.
+2. If index reaches the end, return 0.
+3. If current element equals target, contribute 1.
+4. Otherwise contribute 0.
+5. Recursively count the remaining elements.
+6. Add the current contribution to the recursive result.
+
+### Pattern
+
+```
+(condition ? 1 : 0)
++
+count(arr, index + 1, target)
+```
+
+---
+
+# 7. First Occurrence
+
+### Algorithm
+
+1. Start from index 0.
+2. If index reaches the end, return -1.
+3. If current element equals target, return current index.
+4. Otherwise recursively search the next index.
+
+### Pattern
+
+```
+if arr[index] == target
+    return index
+
+return firstIndex(arr, index + 1, target)
+```
+
+---
+
+# 8. Last Occurrence — Right to Left
+
+### Algorithm
+
+1. Start from `arr.length - 1`.
+2. If index becomes less than 0, return -1.
+3. If current element equals target, return index.
+4. Otherwise move to `index - 1`.
+5. The first match found from the right is the last occurrence.
+
+### Pattern
+
+```
+if arr[index] == target
+    return index
+
+return lastIndex(arr, index - 1, target)
+```
+
+---
+
+# 9. Reverse String — Accumulator
+
+### Algorithm
+
+1. Start from the last character.
+2. If index becomes -1, return the accumulated string.
+3. Add the current character to `revString`.
+4. Move to the previous index.
+5. Continue recursively.
+
+### Pattern
+
+```
+revString += text.charAt(index)
+
+return reverse(text, index - 1, revString)
+```
+
+---
+
+# General Linear Recursion Pattern
+
+```
+current state
+  ↓
+process current state
+  ↓
+move toward base case
+  ↓
+one recursive call
+  ↓
+repeat
+```
+
+Key recognition:
+
+```
+Exactly one recursive call → Linear recursion
+```
+

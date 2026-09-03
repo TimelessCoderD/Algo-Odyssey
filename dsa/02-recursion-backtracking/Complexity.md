@@ -169,3 +169,199 @@ return function(...)
 Java does not generally perform tail-call optimization.
 
 Therefore recursion stack space remains O(n).
+
+## Check Sorted Array
+
+At most `n - 1` adjacent pairs are checked.
+
+```
+Time = O(n)
+Space = O(n)
+```
+
+Best case can be:
+
+```
+Time = O(1)
+```
+
+if the first pair is not sorted.
+
+---
+
+## Count Occurrences
+
+Every element must be examined.
+
+```
+Time = O(n)
+Space = O(n)
+```
+
+---
+
+## First Occurrence
+
+Worst case:
+
+```
+Time = O(n)
+Space = O(n)
+```
+
+Best case:
+
+```
+Time = O(1)
+```
+
+if the first element matches.
+
+---
+
+## Last Occurrence — Right to Left
+
+Worst case:
+
+```
+Time = O(n)
+Space = O(n)
+```
+
+Best case:
+
+```
+Time = O(1)
+```
+
+if the last element matches.
+
+---
+
+# Multiple Recursion
+
+Example:
+
+```
+fun(n - 1)
+fun(n - 1)
+```
+
+Recurrence:
+
+```
+T(n) = 2T(n - 1) + O(1)
+```
+
+Time:
+
+```
+O(2^n)
+```
+
+Space:
+
+```
+O(n)
+```
+
+---
+
+# Divide Recursion
+
+Example:
+
+```
+fun(n / 2)
+fun(n / 2)
+```
+
+Recurrence:
+
+```
+T(n) = 2T(n/2) + O(1)
+```
+
+Time:
+
+```
+O(n)
+```
+
+Space:
+
+```
+O(log n)
+```
+
+---
+
+# Master Theorem Baseline
+
+For:
+
+```
+T(n) = aT(n/b) + f(n)
+```
+
+the recursive-tree baseline is:
+
+```
+n^(log_b a)
+```
+
+Derivation:
+
+```
+number of nodes at level k = a^k
+```
+
+Stop when:
+
+```
+n / b^k = 1
+```
+
+Therefore:
+
+```
+k = log_b n
+```
+
+Leaves:
+
+```
+a^(log_b n)
+=
+n^(log_b a)
+```
+
+---
+
+# String Reverse Using String Concatenation
+
+The recursion itself makes `n` calls.
+
+However, Java `String` is immutable.
+
+Using:
+
+```
+revString += character;
+```
+
+creates new String objects and copies characters.
+
+Therefore repeated concatenation can make the total character-copying work:
+
+```
+O(n²)
+```
+
+The recursion stack itself is:
+
+```
+O(n)
+```
+
+A `StringBuilder` implementation can reduce the string-building cost substantially and will be studied later.

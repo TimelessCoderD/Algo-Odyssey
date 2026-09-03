@@ -1242,6 +1242,219 @@ First define the meaning of the function.
 
 ---
 
+## Recursive Search
+
+Search asks whether the target exists.
+
+At each index:
+
+```
+arr[index] == target
+```
+
+If yes:
+
+```
+return true
+```
+
+Otherwise:
+
+```
+search(arr, index + 1, target)
+```
+
+Base case:
+
+```
+index == arr.length
+```
+
+Return:
+
+```
+false
+```
+
+---
+
+## Check if Array is Sorted
+
+Compare adjacent elements:
+
+```
+arr[index] <= arr[index + 1]
+```
+
+If the current pair is not sorted:
+
+```
+return false
+```
+
+Otherwise recursively check the next pair.
+
+Base case:
+
+```
+index == arr.length - 1
+```
+
+Return:
+
+```
+true
+```
+
+Important:
+
+Because we access `arr[index + 1]`, recursion must stop at the last valid index.
+
+---
+
+## Count Occurrences
+
+For every element:
+
+```
+if arr[index] == target
+    contribution = 1
+else
+    contribution = 0
+```
+
+Then:
+
+```
+count =
+current contribution
++
+count of remaining array
+```
+
+Base case:
+
+```
+index == arr.length
+```
+
+Return:
+
+```
+0
+```
+
+---
+
+## First Occurrence
+
+Search from left to right.
+
+If current element matches:
+
+```
+return index
+```
+
+Otherwise:
+
+```
+firstIndex(arr, index + 1, target)
+```
+
+If the end is reached:
+
+```
+return -1
+```
+
+Because we search from left to right, the first match is the first occurrence.
+
+---
+
+## Last Occurrence
+
+One simple approach is to search from right to left.
+
+Start at:
+
+```
+arr.length - 1
+```
+
+Move:
+
+```
+index - 1
+```
+
+If current element matches:
+
+```
+return index
+```
+
+Base case:
+
+```
+index < 0
+```
+
+Return:
+
+```
+-1
+```
+
+Searching from right to left means the first match encountered is the last occurrence.
+
+---
+
+# Linear Recursion on Strings
+
+## Reverse String Using an Accumulator
+
+An accumulator can store the reversed string built so far.
+
+Example:
+
+```
+reverse("hello")
+```
+
+Process from the last character:
+
+```
+o
+ol
+oll
+olle
+olleh
+```
+
+General pattern:
+
+```
+revString = revString + current character
+index = index - 1
+```
+
+Base case:
+
+```
+index == -1
+```
+
+Return:
+
+```
+revString
+```
+
+Important:
+
+Java `String` is immutable, so repeated `+=` concatenation can be inefficient. A more efficient `StringBuilder` approach will be studied later.
+
 ## Key Insight From Today's Work
 
 The important improvement today was moving from:

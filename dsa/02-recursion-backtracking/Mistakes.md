@@ -495,6 +495,216 @@ Space = O(n)
 
 not O(1).
 
+---
+
+## 6. Ternary Operator With `return`
+
+### Mistake
+
+Trying:
+
+```java
+condition ? return true : return recursiveCall();
+```
+
+### Why it fails
+
+The ternary operator expects expressions or values:
+
+```
+condition ? value1 : value2
+```
+
+`return` is a statement and cannot be placed directly inside the two ternary branches.
+
+### Correct
+
+```
+return condition ? true : recursiveCall();
+```
+
+Or, preferably while learning:
+
+```
+if (condition)
+    return true;
+
+return recursiveCall();
+```
+
+---
+
+## 7. Incorrect Base Case While Checking Sorted Array
+
+### Mistake
+
+Using a condition that stops recursion too early.
+
+### Correction
+
+When comparing:
+
+```
+arr[idx]
+```
+
+with:
+
+```
+arr[idx + 1]
+```
+
+we must stop at:
+
+```
+idx == arr.length - 1
+```
+
+because the last element has no next element.
+
+### General Lesson
+
+Always check which indexes the recursive step accesses before deciding the base case.
+
+---
+
+## 8. String Reverse — Duplicate Character
+
+### Mistake
+
+Adding the current character to `revString` and then adding it again in the return statement.
+
+Example:
+
+```
+revString += text.charAt(idx);
+
+return text.charAt(idx) + reverse(...);
+```
+
+### Why it fails
+
+The current character is added twice.
+
+### Correction
+
+If the accumulator already contains the current character:
+
+```
+revString += text.charAt(idx);
+
+return reverse(text, idx - 1, revString);
+```
+
+---
+
+## 9. String Index vs String Length
+
+### Mistake
+
+Calling:
+
+```
+reverse(text, text.length(), "");
+```
+
+### Why it fails
+
+For a string of length `n`, valid indexes are:
+
+```
+0 ... n - 1
+```
+
+Therefore the last valid index is:
+
+```
+text.length() - 1
+```
+
+### Correct
+
+```
+reverse(text, text.length() - 1, "");
+```
+
+---
+
+## 10. Array Index vs Array Length
+
+Important distinction:
+
+```
+length = number of elements
+last index = length - 1
+```
+
+Example:
+
+```
+Array: [10, 20, 30, 40]
+
+length = 4
+
+indexes:
+0  1  2  3
+         ↑
+      last index
+```
+
+---
+
+## 11. First vs Last Occurrence
+
+### First occurrence
+
+Search from:
+
+```
+left → right
+```
+
+The first match can immediately be returned.
+
+### Last occurrence
+
+One simple approach is:
+
+```
+right → left
+```
+
+The first match found is the last occurrence.
+
+---
+
+## 12. Tail Recursion and Java Stack
+
+A recursive call such as:
+
+```
+return function(...);
+```
+
+has the shape of tail recursion because there is no work after the recursive call.
+
+However, Java does not generally optimize tail recursion.
+
+Therefore the recursion stack remains proportional to the number of recursive calls.
+
+---
+
+# General Debugging Lesson
+
+When recursion gives the wrong result, check in this order:
+
+1. What does the function mean?
+2. Is the base case correct?
+3. Does every recursive call move toward the base case?
+4. Are array/string indexes valid?
+5. Is the current value being processed correctly?
+6. Is the recursive result being returned correctly?
+
 # Important Lessons to Remember
 
 1. Do not guess complexity.
