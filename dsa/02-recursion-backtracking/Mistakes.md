@@ -694,6 +694,128 @@ Therefore the recursion stack remains proportional to the number of recursive ca
 
 ---
 
+# Phase 3 — Pattern 2 Mistakes & Corrections
+
+## 1. Confusing n/2 with log n
+
+Mistake:
+
+Thinking that n/2 operations means O(log n).
+
+Correction:
+
+n/2 is still linear.
+
+O(n/2) = O(n)
+
+log n comes from repeatedly dividing the problem size:
+
+n → n/2 → n/4 → n/8 → ...
+
+---
+
+## 2. T(n-2) vs T(n/2)
+
+T(n-2):
+
+n → n-2 → n-4 → ...
+
+Approximately n/2 levels.
+
+Complexity → O(n)
+
+T(n/2):
+
+n → n/2 → n/4 → ...
+
+Approximately log₂n levels.
+
+Complexity → O(log n)
+
+---
+
+## 3. Binary Search — Including mid again
+
+Incorrect:
+
+```java
+binarySearch(arr, left, mid, target);
+```
+
+or:
+
+```
+binarySearch(arr, mid, right, target);
+```
+
+After checking arr[mid], mid is already processed.
+
+Correct:
+
+```
+binarySearch(arr, left, mid - 1, target);
+```
+
+or:
+
+```
+binarySearch(arr, mid + 1, right, target);
+```
+
+---
+
+## 4. Binary Search — Incorrect base case
+
+Instead of checking whether mid is at index 0 or the last index, check whether the search range has become invalid.
+
+Correct:
+
+```
+if (left > right)
+    return -1;
+```
+
+This directly represents:
+
+"No elements remain to search."
+
+---
+
+## 5. Binary Search — Comparing unnecessary boundaries
+
+The recursive algorithm does not need to separately check:
+
+```
+arr[left]
+arr[right]
+```
+
+The important comparison is:
+
+```
+arr[mid]
+```
+
+Then choose the appropriate half.
+
+---
+
+## 6. Middle Index Calculation
+
+Basic version:
+
+```
+int mid = (left + right) / 2;
+```
+
+Safer version for very large indexes:
+
+```
+int mid = left + (right - left) / 2;
+```
+
+The second version avoids possible integer overflow in `left + right`.
+
 # General Debugging Lesson
 
 When recursion gives the wrong result, check in this order:
@@ -715,5 +837,7 @@ When recursion gives the wrong result, check in this order:
 6. `n - 1` and `n / 2` behave very differently.
 7. Master Theorem requires the appropriate recurrence form.
 8. Time complexity and recursion-stack space are separate concepts.
+
+
 
 

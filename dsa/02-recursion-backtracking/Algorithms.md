@@ -315,5 +315,86 @@ Key recognition:
 
 ```
 Exactly one recursive call → Linear recursion
+
+# Pattern 2 — Divide & Conquer Algorithms
+
+## Algorithm 1 — Divide Recursion
+
+```text
+FUNCTION divide(n)
+
+  IF n <= 1
+    RETURN
+
+  process(n)
+
+  divide(n / 2)
+```
+
+Complexity:
+
+Time → O(log n)
+
+Space → O(log n)
+
+---
+
+## Algorithm 2 — Two Half-Sized Recursive Calls
+
+```
+FUNCTION divide(n)
+
+  IF n <= 1
+    RETURN
+
+  process(n)
+
+  divide(n / 2)
+  divide(n / 2)
+```
+
+Recurrence:
+
+T(n) = 2T(n/2) + O(1)
+
+Complexity:
+
+Time → O(n)
+
+Space → O(log n)
+
+---
+
+## Algorithm 3 — Binary Search
+
+```
+FUNCTION binarySearch(arr, left, right, target)
+
+  IF left > right
+    RETURN -1
+
+  mid = (left + right) / 2
+
+  IF arr[mid] == target
+    RETURN mid
+
+  IF target < arr[mid]
+    RETURN binarySearch(arr, left, mid - 1, target)
+
+  RETURN binarySearch(arr, mid + 1, right, target)
+```
+
+Requirements:
+
+- Array must be sorted.
+- Search range is represented by left and right indexes.
+
+Complexity:
+
+Best Time → O(1)
+
+Worst Time → O(log n)
+
+Space → O(log n)
 ```
 

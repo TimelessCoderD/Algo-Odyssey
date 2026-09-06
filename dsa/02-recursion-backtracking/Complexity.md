@@ -365,3 +365,140 @@ O(n)
 ```
 
 A `StringBuilder` implementation can reduce the string-building cost substantially and will be studied later.
+
+
+# Pattern 2 — Divide & Conquer Complexity
+
+## 1. T(n) = T(n/2) + 1
+
+Expansion:
+
+T(n)
+= T(n/2) + 1
+= T(n/4) + 2
+= T(n/8) + 3
+= ...
+= T(n/2^k) + k
+
+Base case:
+
+n/2^k = 1
+
+2^k = n
+
+k = log₂n
+
+Therefore:
+
+T(n) = O(log n)
+
+---
+
+## 2. T(n) = 2T(n/2) + 1
+
+Expansion:
+
+T(n)
+= 2T(n/2) + 1
+= 4T(n/4) + 3
+= 8T(n/8) + 7
+= ...
+= 2^kT(n/2^k) + (2^k - 1)
+
+At the base case:
+
+2^k = n
+
+Therefore:
+
+T(n) = nT(1) + n - 1
+
+If T(1) = 1:
+
+T(n) = 2n - 1
+
+Therefore:
+
+T(n) = O(n)
+
+---
+
+## 3. T(n) = 2T(n/2) + n
+
+Expansion:
+
+T(n)
+= 2T(n/2) + n
+= 4T(n/4) + 2n
+= 8T(n/8) + 3n
+= ...
+= 2^kT(n/2^k) + kn
+
+At the base case:
+
+2^k = n
+
+k = log₂n
+
+Therefore:
+
+T(n) = nT(1) + n log₂n
+
+Therefore:
+
+T(n) = O(n log n)
+
+---
+
+## 4. T(n - 2)
+
+Recurrence:
+
+T(n) = T(n - 2) + 1
+
+Expansion:
+
+T(n)
+= T(n-2) + 1
+= T(n-4) + 2
+= T(n-6) + 3
+= ...
+= T(n-2k) + k
+
+Base case:
+
+n - 2k = 0
+
+2k = n
+
+k = n/2
+
+Therefore:
+
+T(n) = O(n)
+
+Important:
+
+The algorithm performs approximately n/2 operations, but:
+
+O(n/2) = O(n)
+
+because constant factors are ignored.
+
+---
+
+## 5. Binary Search
+
+Recurrence:
+
+T(n) = T(n/2) + O(1)
+
+Therefore:
+
+Time → O(log n)
+
+Space → O(log n)
+
+Best case → O(1)
+
+Worst case → O(log n)

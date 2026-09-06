@@ -1468,3 +1468,414 @@ to:
 Array sum and array maximum have the same linear-recursion structure.
 
 Only the operation being performed changes.
+
+# Pattern 2 — Divide & Conquer
+
+## 1. What is Divide & Conquer?
+
+Divide & Conquer solves a problem by reducing the problem size significantly, usually by dividing it into smaller parts.
+
+The important idea is how the input size decreases.
+
+### Linear Recursion
+
+n → n - 1 → n - 2 → n - 3 → ...
+
+Example:
+
+T(n) = T(n - 1) + O(1)
+
+Usually:
+
+O(n)
+
+### Divide & Conquer
+
+n → n/2 → n/4 → n/8 → ...
+
+Example:
+
+T(n) = T(n/2) + O(1)
+
+Usually:
+
+O(log n)
+
+---
+
+## 2. Divide Recursion — One Recursive Call
+
+Example:
+
+```java
+static void divide(int n) {
+
+    if (n <= 1)
+        return;
+
+    System.out.println(n);
+
+    divide(n / 2);
+}
+```
+
+For n = 16:
+
+16 → 8 → 4 → 2 → 1
+
+The problem size is divided by 2 at every call.
+
+Recurrence:
+
+T(n) = T(n/2) + O(1)
+
+Expansion:
+
+T(n) = T(n/2) + 1
+
+= T(n/4) + 2
+
+= T(n/8) + 3
+
+= ...
+
+= T(n/2^k) + k
+
+Base case:
+
+n/2^k = 1
+
+Therefore:
+
+2^k = n
+
+k = log₂n
+
+So:
+
+T(n) = O(log n)
+
+Space Complexity:
+
+O(log n) because the recursion stack contains one path of depth log n.
+
+---
+
+## 3. Two Recursive Calls on Half-Sized Problems
+
+Example:
+
+```java
+static void divide(int n) {
+
+    if (n <= 1)
+        return;
+
+    System.out.println(n);
+
+    divide(n / 2);
+    divide(n / 2);
+}
+```
+
+Recurrence:
+
+T(n) = 2T(n/2) + O(1)
+
+For n = 8, the recursion tree is:
+
+```
+         8
+      /     \
+     4       4
+   /  \     /  \
+  2    2   2    2
+ / \  / \ / \  / \
+1  1 1  1 1 1 1  1
+```
+
+Number of nodes at each level:
+
+Level 0 → 1
+
+Level 1 → 2
+
+Level 2 → 4
+
+Level 3 → 8
+
+Total:
+
+1 + 2 + 4 + 8 = 15
+
+General pattern:
+
+1 + 2 + 4 + ... + n = O(n)
+
+Therefore:
+
+T(n) = O(n)
+
+Space Complexity:
+
+O(log n)
+
+Although the tree contains O(n) total calls, only one recursive path is active at a time.
+
+---
+
+## 4. Two Recursive Calls + Linear Work
+
+Example:
+
+```java
+static void divide(int n) {
+
+    if (n <= 1)
+        return;
+
+    for (int i = 0; i < n; i++) {
+        System.out.println(i);
+    }
+
+    divide(n / 2);
+    divide(n / 2);
+}
+```
+
+At each invocation:
+
+- O(n) local work is performed.
+- Two recursive calls are made.
+- Each recursive call receives n/2.
+
+Recurrence:
+
+T(n) = 2T(n/2) + n
+
+For n = 8:
+
+Level 0:
+
+8 work
+
+Level 1:
+
+4 + 4 = 8 work
+
+Level 2:
+
+2 + 2 + 2 + 2 = 8 work
+
+Level 3:
+
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 = 8 work
+
+Therefore, every level performs total O(n) work.
+
+Number of levels:
+
+log₂n
+
+Total:
+
+n × log n
+
+Therefore:
+
+T(n) = O(n log n)
+
+---
+
+## 5. Important Recurrence Comparison
+
+### T(n) = T(n/2) + 1
+
+One recursive call.
+
+Problem size is divided by 2.
+
+Complexity:
+
+O(log n)
+
+---
+
+### T(n) = 2T(n/2) + 1
+
+Two recursive calls.
+
+Each problem is half the size.
+
+Complexity:
+
+O(n)
+
+---
+
+### T(n) = 2T(n/2) + n
+
+Two recursive calls.
+
+Each problem is half the size.
+
+O(n) work is performed at every level.
+
+Complexity:
+
+O(n log n)
+
+---
+
+## 6. n/2 vs log n — Important Distinction
+
+Do not confuse:
+
+T(n - 2)
+
+with:
+
+T(n/2)
+
+### T(n - 2)
+
+The problem decreases by a constant amount.
+
+n → n-2 → n-4 → n-6 → ...
+
+Number of levels:
+
+n/2
+
+Therefore:
+
+O(n)
+
+### T(n/2)
+
+The problem is divided by a constant factor.
+
+n → n/2 → n/4 → n/8 → ...
+
+Number of levels:
+
+log₂n
+
+Therefore:
+
+O(log n)
+
+Important:
+
+n/2 is a linear quantity, not logarithmic.
+
+O(n/2) = O(n)
+
+The constant 1/2 is ignored in Big-O notation.
+
+---
+
+# 7. Binary Search — Recursive
+
+Binary Search is a classic Divide & Conquer algorithm.
+
+Requirement:
+
+The array must be sorted.
+
+Example:
+
+arr = {10, 20, 30, 40, 50, 60, 70, 80, 90}
+
+Target = 70
+
+At each step:
+
+1. Find the middle element.
+2. Compare middle with target.
+3. If equal → return index.
+4. If target is smaller → search left half.
+5. If target is larger → search right half.
+6. If the search range becomes invalid → return -1.
+
+Recursive implementation:
+
+```java
+static int binarySearch(int[] arr, int left, int right, int target) {
+
+    if (left > right)
+        return -1;
+
+    int mid = (left + right) / 2;
+
+    if (arr[mid] == target)
+        return mid;
+
+    if (arr[mid] > target)
+        return binarySearch(arr, left, mid - 1, target);
+
+    return binarySearch(arr, mid + 1, right, target);
+}
+```
+
+Call:
+
+```
+binarySearch(arr, 0, arr.length - 1, target);
+```
+
+---
+
+## 8. Why mid - 1 and mid + 1?
+
+After checking arr[mid], we know that mid is not the target.
+
+Therefore, mid should not be included in the next search.
+
+If target < arr[mid]:
+
+left half:
+
+left ... mid - 1
+
+If target > arr[mid]:
+
+right half:
+
+mid + 1 ... right
+
+Using mid itself again can cause the search range to stop shrinking and lead to infinite recursion.
+
+---
+
+## 9. Binary Search Complexity
+
+At every recursive call, the search space is approximately halved:
+
+n → n/2 → n/4 → n/8 → ...
+
+Recurrence:
+
+T(n) = T(n/2) + O(1)
+
+Therefore:
+
+Time Complexity:
+
+O(log n)
+
+Space Complexity:
+
+O(log n)
+
+The O(log n) space comes from the recursive call stack.
+
+Best case:
+
+O(1)
+
+If the target is found at the first middle-element check.
+
+Worst case:
+
+O(log n)

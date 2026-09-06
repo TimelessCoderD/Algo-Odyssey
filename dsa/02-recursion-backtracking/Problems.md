@@ -713,4 +713,26 @@ Status: Solved
 
 ---
 
-#
+# Phase 3 — Pattern 2: Divide & Conquer
+
+| # | Problem | Status | Complexity |
+|---|---|---|---|
+| 18 | Divide recursion: n → n/2 | ✅ Solved | O(log n) |
+| 19 | Two recursive calls on n/2 | ✅ Solved | O(n) |
+| 20 | Two recursive calls + O(n) work | ✅ Solved | O(n log n) |
+| 21 | Binary Search — Recursive | ✅ Solved | O(log n) |
+
+## Key Learning
+
+Pattern 2 changes the problem size by division rather than subtraction.
+
+Important recurrence patterns:
+
+T(n) = T(n/2) + O(1)
+→ O(log n)
+
+T(n) = 2T(n/2) + O(1)
+→ O(n)
+
+T(n) = 2T(n/2) + O(n)
+→ O(n log n)
