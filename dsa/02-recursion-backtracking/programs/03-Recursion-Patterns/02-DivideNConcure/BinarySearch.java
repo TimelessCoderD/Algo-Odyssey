@@ -1,3 +1,4 @@
+
 public class BinarySearch {
         static int binarySearch(int[] arr, int ldx, int rdx, int target) {
 
